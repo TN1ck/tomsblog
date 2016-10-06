@@ -11,8 +11,6 @@ $small-font-size:  $base-font-size * 0.875;
 $base-line-height: 1.5;
 
 $spacing-unit:     30px;
-
-$text-color:       #111;
 $background-color: #fdfdfd;
 $brand-color:      #2a7ae2;
 
@@ -26,14 +24,37 @@ $content-width:    800px;
 $on-palm:          600px;
 $on-laptop:        800px;
 
-// Minima also includes a mixin for defining media queries.
-// Use media queries like this:
-// @include media-query($on-palm) {
-//     .wrapper {
-//         padding-right: $spacing-unit / 2;
-//         padding-left: $spacing-unit / 2;
-//     }
-// }
+// colors
+$color-green:      #16a085;
+$color-base:       #111111;
+$text-color:       $color-base;
 
-// Import partials from the `minima` theme.
-@import "minima";
+// grid
+$gutter-width: 20px;
+$gutter-compensation: $gutter-width * .5 * -1;
+$half-gutter-width: $gutter-width * .5;
+
+$g-breakpoints:
+    xs 0,
+    sm 768px,
+    md 992px,
+    lg 1200px;
+
+$g-grid-columns: 12;
+
+
+@import "grid";
+@import "sidebar";
+@import "home";
+
+// the super basics
+body {
+    box-sizing: border-box;
+    background-color: $background-color;
+    color: $text-color;
+    font-size: $base-font-size;
+    font-family: $base-font-family;
+    line-height: $base-line-height;
+    padding: 0;
+    margin: 0;
+}
