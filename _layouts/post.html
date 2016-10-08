@@ -1,14 +1,29 @@
 ---
 layout: default
 ---
+
 <article class="post">
 
-  <header class="post-header">
-    <h1 class="post-title">{{ page.title | escape }}</h1>
-  </header>
+    <header class="post-header">
+        <h1 itemprop="headline" class="post-title">{{ page.title | escape }}</h1>
+        <meta itemprop="name">{{ page.title | escape }}</meta>
+        <time itemProp="datePublished" class="post-date">{{ page.date | date: "%b %-d, %Y" }}</time>
+    </header>
 
-  <div class="post-content">
-    {{ content }}
-  </div>
+    <div class="post-excerpt">
+        <span class="post-excerpt-inner">
+            {{ page.excerpt }}
+        </span>
+    </div>
+
+    <div class="post-content">
+        {{ page.content }}
+    </div>
+
+    <div class="post-author-container">
+        <span class="post-author" itemprop="author">
+            {{ page.author }}
+        </span>
+    </div>
 
 </article>

@@ -1,10 +1,38 @@
 <div class="sidebar">
-    <div class="sidebar-inner">
-        <h1>Hi. I'm Tom.</h1>
-        <p>This is my Blog. Thanks for looking by.</p>
-        <nav class="sidebar-nav">
-            <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}">Home</a>
-            <a class="sidebar-nav-item" href="https://github.com/TN1ck">Github</a>
-        </nav>
+    <a href="/" class="sidebar-header">
+        Hi. I'm Tom.
+    </a>
+    <div class="sidebar-section">
+        <div class="sidebar-description">
+            This is my Blog.
+            <br/>
+            Thanks for looking by.
+        </div>
+    </div>
+    <div class="sidebar-section">
+        <div class="sidebar-links">
+            External Links
+            <br/>
+            <div class="sidebar-url">
+                <a href="https://github.com/TN1ck">Github</a>
+            </div>
+            <div class="sidebar-url">
+                <a href="https://www.linkedin.com/in/tom-nick-50515110b">LinkedIn</a>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar-section">
+        <div class="sidebar-sitemap">
+            Recent Posts
+            <ul>
+                {% for post in site.posts %}
+                    <li>
+                        <div class="sidebar-url {% if page.url == post.url %} sidebar-url-active {% endif %}">
+                            <a href="{{ post.url }}">{{ post.title }}</a>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 </div>

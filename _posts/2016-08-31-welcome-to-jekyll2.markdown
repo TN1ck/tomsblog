@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
-date:   2016-08-31 22:21:33 +0200
+title:  "Welcome to Jekyll 2!"
+date:   2016-09-31 22:21:33 +0200
 categories: jekyll update
 author: Tom Nick
 excerpt: To add new posts, simply add a file in the `_posts` directory that follows the convention and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.

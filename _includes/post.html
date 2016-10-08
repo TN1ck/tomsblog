@@ -1,0 +1,24 @@
+<article class="post">
+
+    <header class="post-header">
+        <h1 class="post-title">{{ post.title | escape }}</h1>
+        <time itemProp="datePublished" class="post-date">{{ post.date | date: "%b %-d, %Y" }}</time>
+    </header>
+
+    <div class="post-excerpt">
+        <span class="post-excerpt-inner">
+            {{ post.excerpt }}
+        </span>
+    </div>
+
+    <div class="post-content">
+        {{ post.content }}
+    </div>
+
+    <div class="post-author-container">
+        <span class="post-author" itemprop="author">
+            {{ post.author }}
+        </span>
+    </div>
+
+</article>
