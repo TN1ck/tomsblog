@@ -95,6 +95,10 @@ $shadow-padding-vertical: 3px;
 .green-shadow {
     color: white;
     background-color: $color-brand;
+    -webkit-box-decoration-break: clone;
+    -ms-box-decoration-break: clone;
+    -o-box-decoration-break: clone;
+    box-decoration-break: clone;
     box-shadow:  $shadow-padding-horizontal  0   0 $color-brand,
                 -$shadow-padding-horizontal  0   0 $color-brand,
                 -$shadow-padding-horizontal  $shadow-padding-vertical 0 $color-brand,
