@@ -27,16 +27,19 @@ $on-laptop:        800px;
 
 // colors taken from https://yeun.github.io/open-color/swatches.html
 $color-cyan8:      #0c8599;
+$color-teal5:      #20c997;
 $color-teal7:      #0ca678;
+$color-teal8:      #099268;
 $color-green6:     #40c057;
 $color-base:       #111111;
+$color-brand-light: $color-teal5;
 $color-brand:      $color-teal7;
-$color-brand-dark: darken($color-brand, 10%);
+$color-brand-dark: $color-teal8;
 $text-color:       $color-base;
 
 $max-content-width: 700px;
 $min-content-width: 600px;
-$sidebar-width: 237px;
+$sidebar-width: 240px;
 
 
 html {
@@ -59,7 +62,12 @@ body {
     padding-bottom: 100px + $spacing-unit * 2;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 main {
+    display: block;
     max-width: $max-content-width;
     margin-top: $spacing-unit;
     margin-left: auto;
@@ -74,6 +82,7 @@ main {
 }
 
 footer {
+    display: block;
     color: white;
     background-color: $color-brand;
     padding: $spacing-unit $spacing-unit;
@@ -83,7 +92,11 @@ footer {
     right: 0;
 }
 
-.green-block {
+.hidden {
+    display: none;
+}
+
+.brand-color-block {
     color: white;
     background-color: $color-brand;
     padding: 5px 15px;
@@ -92,7 +105,7 @@ footer {
 
 $shadow-padding-horizontal: 7px;
 $shadow-padding-vertical: 3px;
-.green-shadow {
+.brand-color-shadow {
     color: white;
     background-color: $color-brand;
     -webkit-box-decoration-break: clone;
@@ -116,7 +129,7 @@ $shadow-padding-vertical: 3px;
     margin-top: -$spacing-unit;
 
     &-header {
-        @extend .green-block;
+        @extend .brand-color-block;
         text-decoration: none;
         font-size: $font-size-h1;
         &:hover {
@@ -125,7 +138,7 @@ $shadow-padding-vertical: 3px;
     }
 
     &-description {
-        @extend .green-block;
+        @extend .brand-color-block;
         margin-top: 5px;
     }
 
@@ -134,12 +147,12 @@ $shadow-padding-vertical: 3px;
     }
 
     &-links {
-        @extend .green-block;
+        @extend .brand-color-block;
         margin-top: 5px;
     }
 
     &-sitemap {
-        @extend .green-block;
+        @extend .brand-color-block;
         margin-top: 5px;
 
         ul {
@@ -152,6 +165,7 @@ $shadow-padding-vertical: 3px;
     }
 
     &-url {
+        margin: 5px 0;
         a {
             &:before {
                 content: '>>';
@@ -172,6 +186,9 @@ $shadow-padding-vertical: 3px;
 
         &-active {
             text-decoration: underline;
+            a:before {
+                text-decoration: none;
+            }
         }
     }
 
@@ -188,6 +205,17 @@ $shadow-padding-vertical: 3px;
         margin-bottom: $spacing-unit / 2;
     }
 
+    &-url.post-url {
+        color: $text-color;
+        text-decoration: none;
+        &:visited {
+            color: $text-color;
+        }
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
     &-separator {
         margin-top: $spacing-unit * 2;
         margin-bottom: $spacing-unit * 2;
@@ -202,17 +230,28 @@ $shadow-padding-vertical: 3px;
     }
 
     &-author {
-        @extend .green-shadow;
+        @extend .brand-color-shadow;
         &:before {
             content: "---";
             letter-spacing: -2px;
         }
     }
 
+    &-content {
+        figure {
+            overflow-x: scroll;
+        }
+    }
+
     a {
-        color: $color-brand;
+        color: $color-brand-light;
+        text-decoration: none;
         &:visited {
             color: $color-brand-dark;
+        }
+
+        &:hover {
+            text-decoration: underline;
         }
     }
 
@@ -221,7 +260,7 @@ $shadow-padding-vertical: 3px;
         line-height: 35px;
         padding-left: $shadow-padding-horizontal;
         &-inner {
-            @extend .green-shadow;
+            @extend .brand-color-shadow;
         }
     }
 }
@@ -234,11 +273,6 @@ $shadow-padding-vertical: 3px;
 
     li {
         list-style-type: none;
-
-        a {
-            color: $text-color;
-            text-decoration: none;
-        }
     }
 }
 
@@ -259,7 +293,7 @@ $shadow-padding-vertical: 3px;
     }
 
     main {
-        width: auto;
+        width: 100%;
         margin-left: auto;
         margin-right: auto;
         padding-left: $spacing-unit;

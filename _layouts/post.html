@@ -6,7 +6,7 @@ layout: default
 
     <header class="post-header">
         <h1 itemprop="headline" class="post-title">{{ page.title | escape }}</h1>
-        <meta itemprop="name">{{ page.title | escape }}</meta>
+        <meta class="hidden" itemprop="name">{{ page.title | escape }}</meta>
         <time itemProp="datePublished" class="post-date">{{ page.date | date: "%b %-d, %Y" }}</time>
     </header>
 
