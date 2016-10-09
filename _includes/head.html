@@ -27,8 +27,12 @@
 	<meta name="theme-color" content="#0ca678">
 
 	<!-- CSS & fonts -->
-	<link rel="stylesheet" href="{{site.baseurl}}/css/main.css">
-	<!-- Put your fonts here -->
-	<link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700&subset=latin-ext" rel="stylesheet">
+	{% capture styles %}
+	{% include main.scss %}
+	{% endcapture %}
+
+	<style>
+	{{ styles | scssify }}
+	</style>
 
 </head>

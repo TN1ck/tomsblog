@@ -22,5 +22,8 @@ url: "https://tn1ck.github.io" # the base hostname & protocol for your site
 twitter_username: tomnck
 github_username:  TN1ck
 
+sass:
+  style: compressed
+
 # Build settings
 markdown: kramdown
