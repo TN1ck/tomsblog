@@ -17,8 +17,8 @@ title: Toms Blog
 email: tomwanick@gmail.com
 description: > # I'm Tom, Frontend Developer at LIQID. This is my personal blog, where I write about web-dev related topics.
 tagline:  I'm Tom, Frontend Developer at LIQID. This is my personal blog.
-baseurl: "/tomsblog" # the subpath of your site, e.g. /blog
-url: "https://tn1ck.github.io" # the base hostname & protocol for your site
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "tomnick.org" # the base hostname & protocol for your site
 twitter_username: tomnck
 github_username:  TN1ck
 
