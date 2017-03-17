@@ -10,7 +10,7 @@ $base-font-size:   16px;
 $base-font-weight: 400;
 $small-font-size:  $base-font-size * 0.875;
 $font-size-h1:     36px;
-$base-line-height: 1.5;
+$base-line-height: 1.75;
 
 $spacing-unit:     30px;
 $background-color: #f5f5f5;
@@ -26,10 +26,12 @@ $content-width:    800px;
 $on-palm:          600px;
 $on-laptop:        800px;
 
-// colors taken from https://yeun.github.io/open-color/swatches.html
+// colors taken from https://yeun.github.io/open-color/swatches.html and
+// https://material.io/guidelines/style/color.html#color-color-palette
 $color-cyan8:      #0c8599;
-$color-teal5:      #20c997;
-$color-teal7:      #0ca678;
+$color-teal5:      #009688;
+$color-teal7:      #00695C;
+
 $color-teal8:      #099268;
 $color-green6:     #40c057;
 $color-base:       #111111;
@@ -38,10 +40,18 @@ $color-brand:      $color-teal7;
 $color-brand-dark: $color-teal8;
 $text-color:       $color-base;
 
-$max-content-width: 600px;
+$screen-xs: 480px;
+$screen-sm-min: 481px;
+
+$max-content-width: 630px;
 $min-content-width: 500px;
 $sidebar-width: 240px;
 
+
+// box-sizing for every element
+* {
+    box-sizing: border-box;
+}
 
 html {
     height: 100%;
@@ -49,7 +59,6 @@ html {
 
 // the super basics
 body {
-    box-sizing: border-box;
     position: relative;
     background-color: $background-color;
     color: $text-color;
@@ -59,27 +68,17 @@ body {
     padding: 0;
     margin: 0;
 
+    // for the footer
     min-height: 100%;
     padding-bottom: 100px + $spacing-unit * 2;
 }
 
-* {
-    box-sizing: border-box;
-}
-
 main {
-    display: block;
+    display: block; // IE-11
     max-width: $max-content-width;
     margin-top: $spacing-unit;
     margin-left: auto;
     margin-right: auto;
-
-    h1 {
-        margin: 0;
-    }
-    h2 {
-        margin: 0;
-    }
 }
 
 footer {
@@ -93,8 +92,19 @@ footer {
     right: 0;
 }
 
+//
+// UTILITY CLASSES
+//
+
 .hidden {
     display: none;
+}
+
+.clearfix {
+    content: "";
+    clear: both;
+    display: block;
+    height: 0px;
 }
 
 .brand-color-block {
@@ -122,7 +132,12 @@ $shadow-padding-vertical: 3px;
                  $shadow-padding-horizontal -#{$shadow-padding-vertical} 0 $color-brand;
 }
 
+//
+// SIDEBAR
+//
+
 .sidebar {
+
     position: absolute;
     top: 0;
     left: 0;
@@ -166,20 +181,30 @@ $shadow-padding-vertical: 3px;
     }
 
     &-url {
+        position: relative;
         margin: 5px 0;
+        &:before {
+            display: block;
+            position: absolute;
+            left: 0;
+            content: '>>';
+            letter-spacing: -9px;
+            margin-right: 15px;
+            transition: all 0.5s ease;
+        }
         a {
-            &:before {
-                content: '>>';
-                letter-spacing: -9px;
-                margin-right: 15px;
-                transition: all 0.5s ease;
-            }
+            transition: transform 0.3s ease;
+            display: block;
+            padding-left: 15px;
             color: white;
             text-decoration: none;
         }
 
         &:hover {
-            a:before {
+            a {
+                transform: translateX(5px);
+            }
+            &:before {
                 letter-spacing: -3px;
                 margin-right: 10px;
             }
@@ -195,7 +220,45 @@ $shadow-padding-vertical: 3px;
 
 }
 
+//
+// POST
+//
+
 .post {
+
+    &:after {
+        @extend .clearfix;
+    }
+
+    //
+    // Tag styles
+    //
+
+    h1 {
+        margin: 0;
+    }
+    h2 {
+        margin: 0;
+    }
+
+    ul {
+        > li {
+
+        }
+    }
+
+    a {
+        color: $color-brand-light;
+        text-decoration: none;
+        &:visited {
+            color: $color-brand-dark;
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
     &-title {
         font-size: $font-size-h1;
         font-weight: bold;
@@ -228,6 +291,9 @@ $shadow-padding-vertical: 3px;
 
     &-author-container {
         padding-left: $shadow-padding-horizontal;
+        float: none;
+        clear: both;
+        margin-top: $spacing-unit;
     }
 
     &-author {
@@ -239,21 +305,9 @@ $shadow-padding-vertical: 3px;
     }
 
     &-content {
-        figure {
-            overflow-x: scroll;
-        }
-    }
-
-    a {
-        color: $color-brand-light;
-        text-decoration: none;
-        &:visited {
-            color: $color-brand-dark;
-        }
-
-        &:hover {
-            text-decoration: underline;
-        }
+        // figure {
+        //     overflow-x: scroll;
+        // }
     }
 
     &-excerpt {
@@ -264,16 +318,79 @@ $shadow-padding-vertical: 3px;
             @extend .brand-color-shadow;
         }
     }
-}
 
-.home {
-    ul {
-        margin: 0;
-        padding: 0;
+    &-image-container {
+        width: 100%;
+        display: inline-block;
+        &--zoomed {
+            .post-image-text {
+                width: 100%;
+            }
+            .post-image-image {
+                width: 100%;
+                &:hover {
+                    cursor: zoom-out;
+                }
+            }
+        }
     }
 
-    li {
-        list-style-type: none;
+    &-image-image {
+        float: left;
+        width: 50%;
+        &:hover {
+            cursor: zoom-in;
+        }
+        img {
+            width: 100%;
+        }
+    }
+
+    &-image-text {
+        font-size: $small-font-size;
+        float: left;
+        width: 50%;
+        padding-left: 20px;
+    }
+}
+
+//
+// HOME / INDEX
+//
+
+.home {
+    > ul {
+        margin: 0;
+        padding: 0;
+        > li {
+            list-style-type: none;
+        }
+    }
+
+}
+
+
+//
+// Responsive styles
+//
+
+@media (max-width: $screen-xs) {
+    .post {
+
+        &-image-image {
+            width: 100%;
+        }
+
+        &-image-text {
+            width: 100%;
+        }
+    }
+}
+
+@media (min-width: $screen-sm-min) {
+    .post {
+        background: white;
+        padding: 20px;
     }
 }
 
@@ -302,7 +419,9 @@ $shadow-padding-vertical: 3px;
     }
 }
 
-// fonts
+//
+// Fonts
+//
 
 /* latin-ext */
 @font-face {
@@ -336,3 +455,83 @@ $shadow-padding-vertical: 3px;
   src: local('Noto Sans Bold'), local('NotoSans-Bold'), url(https://fonts.gstatic.com/s/notosans/v6/PIbvSEyHEdL91QLOQRnZ1xampu5_7CjHW5spxoeN3Vs.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
+
+
+/* css highlight */
+.highlighter-rouge {
+    background: lighten($grey-color, 30%);
+}
+
+.highlight  {
+    font-size: 13px;
+    margin: 0;
+    // margin-left: -20px;
+    padding-left: 20px;
+    overflow-x: auto;
+    background: #272822;
+}
+.highlight pre { background-color: #272822; }
+.highlight .hll { background-color: #272822; }
+.highlight .c { color: #75715e } /* Comment */
+.highlight .err { color: #960050; } /* Error */
+.highlight .k { color: #66d9ef } /* Keyword */
+.highlight .l { color: #ae81ff } /* Literal */
+.highlight .n { color: #f8f8f2 } /* Name */
+.highlight .o { color: #f92672 } /* Operator */
+.highlight .p { color: #f8f8f2 } /* Punctuation */
+.highlight .cm { color: #75715e } /* Comment.Multiline */
+.highlight .cp { color: #75715e } /* Comment.Preproc */
+.highlight .c1 { color: #75715e } /* Comment.Single */
+.highlight .cs { color: #75715e } /* Comment.Special */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .kc { color: #66d9ef } /* Keyword.Constant */
+.highlight .kd { color: #66d9ef } /* Keyword.Declaration */
+.highlight .kn { color: #f92672 } /* Keyword.Namespace */
+.highlight .kp { color: #66d9ef } /* Keyword.Pseudo */
+.highlight .kr { color: #66d9ef } /* Keyword.Reserved */
+.highlight .kt { color: #66d9ef } /* Keyword.Type */
+.highlight .ld { color: #e6db74 } /* Literal.Date */
+.highlight .m { color: #ae81ff } /* Literal.Number */
+.highlight .s { color: #e6db74 } /* Literal.String */
+.highlight .na { color: #a6e22e } /* Name.Attribute */
+.highlight .nb { color: #f8f8f2 } /* Name.Builtin */
+.highlight .nc { color: #a6e22e } /* Name.Class */
+.highlight .no { color: #66d9ef } /* Name.Constant */
+.highlight .nd { color: #a6e22e } /* Name.Decorator */
+.highlight .ni { color: #f8f8f2 } /* Name.Entity */
+.highlight .ne { color: #a6e22e } /* Name.Exception */
+.highlight .nf { color: #a6e22e } /* Name.Function */
+.highlight .nl { color: #f8f8f2 } /* Name.Label */
+.highlight .nn { color: #f8f8f2 } /* Name.Namespace */
+.highlight .nx { color: #a6e22e } /* Name.Other */
+.highlight .py { color: #f8f8f2 } /* Name.Property */
+.highlight .nt { color: #f92672 } /* Name.Tag */
+.highlight .nv { color: #f8f8f2 } /* Name.Variable */
+.highlight .ow { color: #f92672 } /* Operator.Word */
+.highlight .w { color: #f8f8f2 } /* Text.Whitespace */
+.highlight .mf { color: #ae81ff } /* Literal.Number.Float */
+.highlight .mh { color: #ae81ff } /* Literal.Number.Hex */
+.highlight .mi { color: #ae81ff } /* Literal.Number.Integer */
+.highlight .mo { color: #ae81ff } /* Literal.Number.Oct */
+.highlight .sb { color: #e6db74 } /* Literal.String.Backtick */
+.highlight .sc { color: #e6db74 } /* Literal.String.Char */
+.highlight .sd { color: #e6db74 } /* Literal.String.Doc */
+.highlight .s2 { color: #e6db74 } /* Literal.String.Double */
+.highlight .se { color: #ae81ff } /* Literal.String.Escape */
+.highlight .sh { color: #e6db74 } /* Literal.String.Heredoc */
+.highlight .si { color: #e6db74 } /* Literal.String.Interpol */
+.highlight .sx { color: #e6db74 } /* Literal.String.Other */
+.highlight .sr { color: #e6db74 } /* Literal.String.Regex */
+.highlight .s1 { color: #e6db74 } /* Literal.String.Single */
+.highlight .ss { color: #e6db74 } /* Literal.String.Symbol */
+.highlight .bp { color: #f8f8f2 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #f8f8f2 } /* Name.Variable.Class */
+.highlight .vg { color: #f8f8f2 } /* Name.Variable.Global */
+.highlight .vi { color: #f8f8f2 } /* Name.Variable.Instance */
+.highlight .il { color: #ae81ff } /* Literal.Number.Integer.Long */
+
+.highlight .gh { } /* Generic Heading & Diff Header */
+.highlight .gu { color: #75715e; } /* Generic.Subheading & Diff Unified/Comment? */
+.highlight .gd { color: #f92672; } /* Generic.Deleted & Diff Deleted */
+.highlight .gi { color: #a6e22e; } /* Generic.Inserted & Diff Inserted */

@@ -1,0 +1,11 @@
+<div class="post-image-container">
+    <div class="post-image-image">
+        <img src="{{site.url}}/assets/{{include.image}}" alt="{{include.alt}}"/>
+    </div>
+    <div class="post-image-text">
+        {{include.alt}}
+        {% if include.source %}
+            <a href="{{include.source}}">source</a>
+        {% endif %}
+    </div>
+</div>
