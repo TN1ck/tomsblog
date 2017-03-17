@@ -53,7 +53,7 @@ The code actually improved so much in performance, that we could use our heurist
 So in the end, we achieved place 101 and were all super happy about it, but no paris for us this year. But we again learned some important things, which we keep in mind for the next time:
 
 * Try to implement a simple solution first and really think hard about your heuristic!
-* Add caching! Maybe write a decorator beforehand to easily cached the results of functions.
+* Add caching! Maybe write a decorator beforehand to easily cache the results of functions.
 * Use maybe a fast language to solve the problem. Performance is quite crucial in the end and something like Java/Cpp would have helped us probably there.
 
-Our group Name was TU_Dudes and the code can be seen at [https://github.com/TN1ck/hashcode-2017](https://github.com/TN1ck/hashcode-2017). It's quite the mess though, so be warned.
+Our group name was TU_Dudes and the code can be seen at [https://github.com/TN1ck/hashcode-2017](https://github.com/TN1ck/hashcode-2017). It's quite the mess though, so be warned.
