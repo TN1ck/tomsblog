@@ -3,12 +3,20 @@ layout: default
 ---
 
 <div class="home">
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        {% include post.html post=post %}
-      </li>
-      <hr class="post-separator"/>
-    {% endfor %}
-  </ul>
+  {% assign post = site.posts.first %}
+  <div class="nav">
+    <a class="nav-url" href="{{post.url}}">Latest Post</a>
+  </div>
+  {% include post.html post=post %}
+
+  <div class="other-posts">
+    <h2>Other Posts</h2>
+    <ul class="post-list">
+      {% for post in site.posts %}
+        <li>
+          <a href="{{post.url}}">{{ post.title }}</a> - <time itemProp="datePublished" class="post-list-date">{{ post.date | date: "%b %Y" }}</time>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
 </div>
