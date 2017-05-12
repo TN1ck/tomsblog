@@ -7,14 +7,13 @@ author: Tom Nick
 excerpt: With CSS you can style every input element, except one - the select. It's impossible to change the look of the options without rebuilding the whole select. Is it worth it to rebuild it? If so, when should you do it?
 ---
 
-As part of corporate branding, a lot of times the restyling of the select options is desired. To achieve that, one must rebuild the whole select as a custom input element. But... is it worth it?
+As part of corporate branding, a lot of times the restyling of the select options is desired.
 
 In terms of implementation and features, selects are probably one of the most complex UI-elements in the browser. We often overlook which features it offers, because often we don't even think about when we use it. But let's quickly list things you might forget:
-1. Especially smartphones implement often their own select, for example is the select in iOS Safari highly optimized for touch input, see the picture.
+1. Especially smartphones implement often their own select. For example take the select in iOS Safari, it is highly optimized for touch input and offers a completely different way of input.
 1. It will always render appropriately, which means, you'll always be able to click all the options: If it is on top of the screen, it will render below the cursor, if it is on the bottom, it will render above.
 1. When you type inside the input-field, the selection will change according to the characters you entered.
 1. You can use the keyboard to control it.
-1. You can type to search for specific options
 
 So why even bother to re-implement it? Users like to use stuff they know how to use. Every user will know how to use a select.
 The only reason is that you can decide the UX and the look.
