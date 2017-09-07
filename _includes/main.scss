@@ -231,6 +231,13 @@ $shadow-padding-vertical: 3px;
         }
     }
 
+
+    blockquote {
+        margin: 0;
+        padding-left: 20px;
+        border-left: 0.25em solid $color-brand;
+    }
+
     &-title {
         font-size: $font-size-h1;
         font-weight: bold;
@@ -394,7 +401,9 @@ $shadow-padding-vertical: 3px;
 
 /* css highlight */
 .highlighter-rouge {
-    background: lighten($grey-color, 30%);
+    background: lighten($grey-color, 45%);
+    padding: 2px 5px;
+    color: $color-brand-dark;
 }
 
 .highlight  {
