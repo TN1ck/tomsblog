@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Numbers Game / Zahlenspiel / Take Ten - Minimal Solution"
+title:  "Numbers Game - Minimal Solution"
 date:   2017-09-07 19:21:33 +0100
 categories: blog
 author: Tom Nick
