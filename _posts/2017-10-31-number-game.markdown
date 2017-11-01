@@ -1,10 +1,10 @@
 ---
 layout: post
 title:  "Numbers Game - Minimal Solution"
-date:   2017-09-07 19:21:33 +0100
+date:   2017-10-31 19:21:33 +0100
 categories: blog
 author: Tom Nick
-excerpt: One of the games bored pupils play, is the "Numbers Game", also known as "Take Tens" or in german "Zahlenspiel". I once implemented it and wrote a solver to find the minimum amount of steps to solve the game.
+excerpt: One of the games bored students play, is the "Numbers Game". Also known as "Take Tens" or in german "Zahlenspiel". I once implemented it and wrote a solver to find the minimum amount of steps to solve the game. Here is the solution.
 ---
 
 The Numbers Game is a game you normally play sheets of paper, you write the numbers from 1 to 19 next to each other

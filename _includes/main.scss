@@ -145,12 +145,14 @@ $shadow-padding-vertical: 3px;
     margin-top: $spacing-unit;
     text-align: center;
     .page-header {
-        @extend .brand-color-block;
+
+        color: $color-base;
+        padding: 20px;
 
         display: inline-block;
         font-size: 24px;
         a {
-            color: white;
+            color: $color-base;
             text-decoration: none;
             &:hover {
                 text-decoration: underline;
@@ -197,6 +199,9 @@ $shadow-padding-vertical: 3px;
 //
 
 .post {
+
+    border-radius: 4px;
+    box-shadow: 0 5px 20px rgba(25, 17, 34, 0.1);
 
     &:after {
         @extend .clearfix;
@@ -358,6 +363,8 @@ $shadow-padding-vertical: 3px;
         margin-top: 0;
     }
     .post {
+
+        box-shadow: none;
 
         &-image-image {
             width: 100%;
