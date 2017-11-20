@@ -11,22 +11,22 @@ If you haven't checked out the new dropbox landing page, do it and pay special a
 
 {% include image.html image="dropbox-header/dropbox-animation.gif" alt="The header effect dropbox uses to highlight their new brand colors." %}
 
-So how is it done? At first I thought they use the new blend-modes, but those are only available in chrome and it worked it safari when I tried.
+So how is it done? It can't be blend-modes, as those only work in Chrome and Safari works as well.
 
-When inspecting the dom, one quickly notices, that the header is inside every section - always with the correct colors for this section. It has `position: fixed`, so why isn't it permantly visible and only retains to the parent section? The trick are css masks.
+When inspecting the dom, one quickly notices, that the header is inside every section - always with the correct colors for this section. It has `position: fixed`, so why isn't it permantly visible and only retains to the parent section? CSS masks, which fortunately [most browsers support](https://caniuse.com/#search=css%20masks).
 
 {% include image.html image="dropbox-header/dropbox-dom.png" alt="The clip property accompanied with the absolute positioning will clip containing fixed positioned elements." %}
 
 So to make it work one needs:
 
-1. A relatively positied section which will hold the content
+1. A relatively positioned section which will hold the content
 
 ```css
 .section {
     position: relative;
 }
 ```
-2. inside it an absoletely positioned container that spans the whole section and clips its content. When set to auto, it will automatically use 100%.
+2. inside it an absoletely positioned container that spans the whole section and clips its content. When set to `auto`, it will automatically use 100%.
 
 ```css
 .section__absolute-container {
