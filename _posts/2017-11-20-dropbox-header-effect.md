@@ -60,3 +60,7 @@ This would be valid html with these classes:
 ```
 
 [Here is a good jsFiddle that shows this technique.](http://jsfiddle.net/lmeurs/jf3t0fmf/)
+
+### Update
+
+[/u/usmonov](https://www.reddit.com/r/web_design/comments/7ed42q/recreating_the_new_dropbox_header_animation/dq4do10/) mentioned on reddit, that the jQuery plugin [Midnight.js](http://aerolab.github.io/midnight.js/) achieves the same effect in all browsers. It uses a combination of `overflow: hidden` and javascript applied transforms to achieve this. The transforms are applied using a `requestAnimationFrame`, so no active scroll-listener - which is really good! Using CSS masks is still better imho, as it doesn't need javascript running every 1/60s to work.
