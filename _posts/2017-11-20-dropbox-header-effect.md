@@ -38,13 +38,17 @@ So to make it work one needs:
     clip: rect(auto, auto, auto, auto);
 }
 ```
-3. Inside the absolute positioned container, the fixed positioned element
+3. Inside the absolute positioned container, the fixed positioned element with a `transform` to make Safari happy.
 
 ```css
 .section__fixed-element {
     position: fixed;
     top: 0;
     left: 0;
+    // whitout a transform, safari will have weird rendering bugs
+    // transform: translate3D(0, 0, 0) and similiar also work
+    transform: translateZ(0);
+    will-change: transform;
 }
 ```
 
