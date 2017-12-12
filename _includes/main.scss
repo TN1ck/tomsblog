@@ -224,6 +224,10 @@ $shadow-padding-vertical: 3px;
         }
     }
 
+    img {
+        max-width: 100%;
+    }
+
     a {
         color: $color-brand-light;
         text-decoration: none;
