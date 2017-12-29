@@ -3,7 +3,7 @@ layout: post
 title:  "The Sudoku Series Part 1: Design"
 date:   2016-11-11 20:21:33 +0100
 categories: jekyll
-published: true
+published: false
 author: Tom Nick
 excerpt: This is the first part of a series of blog posts where I create a fully fledged Sudoku. It will focus about the specs this projects aims to implement and a first basic UI.
 ---
